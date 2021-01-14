@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import {mapActions , mapGetters, mapMutations} from 'vuex'
+import {mapActions , mapGetters} from 'vuex'
 export default {
 name: "NewsList",
   computed:{
@@ -29,18 +29,6 @@ name: "NewsList",
       fetchNewspapers: 'fetchNewsPapers',
 
     }),
-    ...mapMutations({
-      setFav: 'SET_FAV',
-      removeFav: 'REMOVE_FAV'
-    }),
-    toFav(item) {
-      item.isFav = !item.isFav
-      if (item.isFav) {
-        this.setFav(item)
-      } else {
-        this.removeFav(item)
-      }
-    },
   },
   created() {
     this.fetchNewspapers()

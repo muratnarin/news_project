@@ -67,7 +67,6 @@
         <b-card body-class="bg-warning text-center">
           <h2>We couldn't found a newspaper with id: "{{$route.params.id}}"</h2>
           <b-button to="/">Return to main page</b-button>
-
         </b-card>
       </b-col>
     </b-row>
