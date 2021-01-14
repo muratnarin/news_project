@@ -1,24 +1,4 @@
-# news_project
+##Basic news app with vue.js, vuex and vue-router. 
+####Listing newspapers and news with serverside search and pagination features.LocalStorage used for persistence issues. 
 
-## Project setup
-```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+##**Do not forget to change default apiKey in '/src/plugins/axios.js'** 
