@@ -1,0 +1,10 @@
+.nowrap{
+  white-space: nowrap;
+}
+a {
+  text-decoration: none;
+  color: #043f79;
+  &:hover{
+    text-decoration: none;
+  }
+}
