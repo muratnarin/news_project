@@ -23,13 +23,16 @@
 
               <b-card-body>
                 <div class="font-weight-bolder">
-                  <v-clamp tag="a" :max-lines="1" :title="item.title" :href="item.url" target="_blank">
-                    {{item.title}}
-                  </v-clamp>
+                  <a :title="item.title" :href="item.url" target="_blank">
+                    <v-clamp autoresize :max-lines="1">
+                      {{item.title}}
+                    </v-clamp>
+                  </a>
+
                 </div>
                 <div class="text-secondary small">{{item.source.name}} - {{formattedDate(item.publishedAt)}}</div>
-                <v-clamp :max-lines="3" v-if="item.description" class="text-muted">
-                  {{ item.description.length > 200 ? item.description.substring(0,200) + '...' : item.description}}
+                <v-clamp autoresize :max-lines="3" v-if="item.description" class="text-muted">
+                  {{item.description}}
                 </v-clamp>
               </b-card-body>
 
