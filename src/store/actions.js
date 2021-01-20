@@ -21,7 +21,7 @@ const actions = {
                 params: {
                     country:'us',
                     page: page || 1,
-                    pageSize: 8
+                    pageSize: 12
                 }
             })
                 .then((response) => {
@@ -40,7 +40,7 @@ const actions = {
                     country:'us',
                     q: searchText || null,
                     page: page || 1,
-                    pageSize: 8
+                    pageSize: 12
                 }
             })
                 .then((response) => {
@@ -56,6 +56,22 @@ const actions = {
             axios.get('/everything', {
                 params: {
                     sources: source || null,
+                }
+            })
+                .then((response) => {
+                    console.log(response.data)
+                    commit('SET_CURRENT_NEWS', response.data.articles)
+                    resolve(response)
+                })
+                .catch((error) => { reject(error) })
+        })
+    },
+    fetchFilteredCurrentNews({commit}, {source, searchText}) {
+        return new Promise((resolve, reject) => {
+            axios.get('/everything', {
+                params: {
+                    sources: source || null,
+                    q: searchText || null
                 }
             })
                 .then((response) => {

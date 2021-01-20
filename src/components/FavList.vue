@@ -1,6 +1,6 @@
 <template>
   <div v-if="getFavs.length > 0">
-        <h4>Favourites</h4>
+        <h5 class="mb-4">Favourites</h5>
         <b-list-group>
           <b-list-group-item
               v-for="item in getFavs"

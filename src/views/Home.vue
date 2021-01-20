@@ -1,10 +1,10 @@
 <template>
   <b-row>
-    <b-col md="3">
+    <b-col lg="3" md="5">
       <fav-list class="mb-4"></fav-list>
       <newspaper-list></newspaper-list>
     </b-col>
-    <b-col md="9">
+    <b-col lg="9" md="7">
       <news-list></news-list>
     </b-col>
 

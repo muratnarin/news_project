@@ -1,41 +1,38 @@
 <template>
   <div>
     <b-row class="align-items-center mb-3">
-      <b-col>
-        <h4>Top Headlines</h4>
+      <b-col lg="8">
+        <h5>Top Headlines</h5>
       </b-col>
-      <b-col>
+      <b-col lg="4">
         <b-input @input="onSearch" v-model="searchText" size="sm" placeholder="Search top headlines">
         </b-input>
       </b-col>
 
     </b-row>
 
-    <b-row cols="1">
+    <b-row cols-xl="3" cols-lg="2" cols-md="1" cols-sm="2" cols="1">
       <b-col
           v-for="item in getNews"
           :key="item.id"
           class="mb-4"
       >
-        <b-card no-body class="overflow-hidden" style="max-height: 200px">
-          <b-row no-gutters>
-            <b-col md="5">
-              <b-card-img :src="item.urlToImage" alt="Image" class="rounded-0"></b-card-img>
-            </b-col>
-            <b-col md="7">
+        <b-card no-body class="shadow border-0 rounded">
+
+            <b-card-img :src="item.urlToImage" alt="Image" style="height: 200px"></b-card-img>
+
               <b-card-body>
-                <h6>
-                  <router-link :title="item.title" to="#">
-                    {{ item.title.length > 200 ? item.title.substring(0,200) + '...' : item.title}}
-                  </router-link>
-                </h6>
+                <div class="font-weight-bolder">
+                  <v-clamp tag="a" :max-lines="1" :title="item.title" :href="item.url" target="_blank">
+                    {{item.title}}
+                  </v-clamp>
+                </div>
                 <div class="text-secondary small">{{item.source.name}} - {{formattedDate(item.publishedAt)}}</div>
-                <b-card-text v-if="item.description" class="text-muted">
-                  {{item.description.substring(0,500)}}
-                </b-card-text>
+                <v-clamp :max-lines="3" v-if="item.description" class="text-muted">
+                  {{ item.description.length > 200 ? item.description.substring(0,200) + '...' : item.description}}
+                </v-clamp>
               </b-card-body>
-            </b-col>
-          </b-row>
+
         </b-card>
       </b-col>
     </b-row>
@@ -57,9 +54,11 @@
 <script>
 import {mapActions, mapGetters} from 'vuex'
 import {debounce} from 'lodash'
+import VClamp from 'vue-clamp'
 
 export default {
 name: "NewsList",
+  components: {VClamp},
   data:() => ({
     searchText: null,
     perPage: 8,
@@ -80,7 +79,6 @@ name: "NewsList",
     formattedDate(date){
       let fDate = new Date(date)
       return [fDate.getDate(), fDate.getMonth()+1, fDate.getFullYear()].join('/')
-          +' '+ [fDate.getHours(), fDate.getMinutes()].join(':');
     },
     onSearch(){
       this.currentPage = 1

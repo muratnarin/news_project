@@ -1,7 +1,7 @@
 <template>
   <div>
-        <h4 class="mb-3">All Newspapers</h4>
-        <b-list-group>
+        <h5 class="mb-3">All Newspapers</h5>
+        <b-list-group class="mb-4">
           <b-list-group-item
               v-for="(item,index) in getNewspapers"
               :key="index"
